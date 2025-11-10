@@ -296,20 +296,21 @@
       }
 
       // Function to update the badge count
-      function updateNotificationCount() {
-        const count = notificationsContainer.children.length;
-        notifCount.textContent = count;
-        notifCount.style.display = count > 0 ? "inline-block" : "none";
+      function updateNotificationCount(cnt) {
+        // const count = notificationsContainer.children.length;
+        notifCount.textContent = cnt;
+        notifCount.style.display = cnt > 0 ? "inline-block" : "none";
       }
 
       // Function to add a new notification dynamically
       function addNotification(data) {
+        var cnt = 0;
         data.forEach((element) => {
           const newNotif = document.createElement("div");
           if (element.status === "read") {
             newNotif.className = "readnotification";
           } else if (element.status === "unread") {
-            updateNotificationCount();
+            cnt = cnt + 1;
             newNotif.className = "notification";
           }
           newNotif.classList.add("notification");
@@ -329,6 +330,7 @@
 
           notificationsContainer.prepend(newNotif); // Newest on top
         });
+        updateNotificationCount(cnt);
       }
 
       // Function to call get api
@@ -348,7 +350,6 @@
           );
 
           const data = await response.json();
-          console.log(data.responseData.length);
           addNotification(data.responseData);
         } catch (error) {
           console.log("Error: " + error.message);
@@ -378,7 +379,7 @@
         }
       }
       // Initialize count on load
-      updateNotificationCount();
+      // updateNotificationCount();
     </script>
   </body>
 </html>

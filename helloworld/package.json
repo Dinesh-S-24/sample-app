@@ -21,5 +21,8 @@
     "androidjs": "^1.0.12",
     "left-pad": "^1.3.0",
     "socket.io": "^2.2.0"
+  },
+  "theme": {
+    "fullScreen": true
   }
 }
