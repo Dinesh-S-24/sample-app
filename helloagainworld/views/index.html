@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temple Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      /* Notification Panel Styles */
+      #notifPanel {
+        position: fixed;
+        top: 0;
+        right: -350px;
+        width: 300px;
+        height: 100%;
+        background: #fff;
+        border-left: 3px solid #198754;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease-in-out;
+        z-index: 1050;
+        overflow-y: auto;
+      }
+      #notifPanel.open {
+        right: 0;
+      }
+      #notifPanelHeader {
+        background: #198754;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #notifList {
+        padding: 10px;
+      }
+      .notif-item {
+        border-bottom: 1px solid #ddd;
+        padding: 8px 5px;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <!-- ✅ Navbar with Notification Bell -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">🛕 Sri Lakshmi Temple</a>
+        <div class="d-flex align-items-center gap-2">
+          <a href="seva.html" class="btn btn-light btn-sm">Sevas</a>
+          <a href="bookings.html" class="btn btn-light btn-sm">My Bookings</a>
+          <a href="gallery.html" class="btn btn-light btn-sm">Gallery</a>
+          <button class="btn btn-light btn-sm" onclick="toggleNotifications()">
+            🔔
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ✅ Notification Side Panel -->
+    <div id="notifPanel">
+      <div id="notifPanelHeader">
+        <strong>Temple Notifications</strong>
+        <button class="btn btn-light btn-sm" onclick="toggleNotifications()">
+          ✖
+        </button>
+      </div>
+      <div id="notifList">Loading...</div>
+    </div>
+
+    <!-- ✅ Main Content -->
+    <div class="container-fluid p-0">
+      <img
+        src="images/temple_banner.jpg"
+        alt="Temple Banner"
+        class="img-fluid w-100"
+        style="max-height: 400px; object-fit: cover"
+      />
+    </div>
+
+    <div class="container mt-4">
+      <h2 class="text-center mb-3">Welcome to Sri Lakshmi Temple</h2>
+      <p class="text-center">
+        Experience divinity, peace, and spiritual bliss.
+      </p>
+      <hr />
+
+      <h4>Temple Details</h4>
+      <div id="temple-details" class="p-3 border rounded bg-white mb-4">
+        Loading...
+      </div>
+
+      <h4>Upcoming Events</h4>
+      <div id="events-list" class="row g-3"></div>
+    </div>
+
+    <div
+      id="daily-quote"
+      class="text-center mt-5 p-3 bg-success text-white"
+    ></div>
+    <footer class="text-center text-muted p-2 bg-light border-top">
+      © 2025 Sri Lakshmi Temple | <a href="gallery.html">Gallery</a> |
+      <a href="seva.html">Sevas</a>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      fetchTempleDetails();
+      fetchEvents();
+      showDailyQuote();
+      fetchNotifications(); // ✅ load notifications on page load
+    </script>
+  </body>
+</html>

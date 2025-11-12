@@ -1,0 +1,28 @@
+{
+  "name": "templeapp",
+  "package-name": "mypkg",
+  "app-name": "TempleApp",
+  "project-type": "webview",
+  "icon": "./assets/icon/e96c74c442ca9e53cbec24b0687b88f6.png",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "permission": [
+    "android.permission.INTERNET"
+  ],
+  "scripts": {
+    "test": "node main.js",
+    "build": "androidjs build"
+  },
+  "dist-path": "./dist",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "androidjs": "^1.0.12",
+    "left-pad": "^1.3.0",
+    "socket.io": "^2.2.0"
+  },
+  "theme": {
+    "fullScreen": true
+  }
+}
